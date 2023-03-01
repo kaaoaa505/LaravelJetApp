@@ -17,3 +17,22 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::middleware('auth:sanctum')->get('/test', function (Request $request) {
+    if($request->user()->tokenCan('read')){
+
+        return response('just for test');
+    }else{
+        return 'not allowed';
+    }
+});
+
+Route::middleware('auth:sanctum')->post('/test', function (Request $request) {
+    if($request->user()->tokenCan('write')){
+
+        return response('just for test');
+    }else{
+        return 'not allowed';
+    }
+});
