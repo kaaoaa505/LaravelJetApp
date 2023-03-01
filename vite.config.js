@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 import laravel, { refreshPaths } from 'laravel-vite-plugin';
 
 export default defineConfig({
+    server: {
+      port: 8001,
+    },
     plugins: [
         laravel({
             input: [
